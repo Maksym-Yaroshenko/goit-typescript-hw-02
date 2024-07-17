@@ -1,7 +1,8 @@
 import { Oval } from "react-loader-spinner";
 import css from "./Loader.module.css";
+import { FC } from "react";
 
-export default function Loader() {
+const Loader: FC = () => {
   return (
     <div className={css.container}>
       <Oval
@@ -15,4 +16,6 @@ export default function Loader() {
       />
     </div>
   );
-}
+};
+
+export default Loader;

@@ -1,6 +1,9 @@
 import Modal from "react-modal";
-Modal.setAppElement("#root");
 import css from "./ImageModal.module.css";
+import { ImgProfile } from "../App/App.types";
+import { FC } from "react";
+
+Modal.setAppElement("#root");
 
 const customStyles = {
   content: {
@@ -15,7 +18,17 @@ const customStyles = {
   },
 };
 
-export default function ImageModal({ closeModal, modalIsOpen, articles }) {
+interface ImageModalProfile {
+  closeModal: () => void;
+  modalIsOpen: boolean;
+  articles: ImgProfile;
+}
+
+const ImageModal: FC<ImageModalProfile> = ({
+  closeModal,
+  modalIsOpen,
+  articles,
+}) => {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -25,7 +38,9 @@ export default function ImageModal({ closeModal, modalIsOpen, articles }) {
       closeTimeoutMS={400}
       className={css.modal}
     >
-      <img src={articles.regular} alt={articles.alt_description} />
+      <img src={articles.urls.regular} alt={articles.alt_description} />
     </Modal>
   );
-}
+};
+
+export default ImageModal;
